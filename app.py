@@ -1,10 +1,17 @@
 from ui import msg_bienvenida, msg_salida_bucle_eventos, msg_input
 from tareas import añadir_tarea
-from tabulate import tabulate
+import rich.console as console
+import rich.table as table
 
 print(msg_bienvenida)
 
+consola = console.Console()
+tabla = table.Table()
 tareas = []
+
+tabla.add_column("ID")
+tabla.add_column("Completada")
+tabla.add_column("Tarea")
 
 while True:
     print(msg_salida_bucle_eventos)
@@ -12,6 +19,12 @@ while True:
     if titulo_tarea.upper() in ("STOP", "PARA", "PARAR", "S"):
         break
     añadir_tarea(tareas, titulo_tarea.title())
-    tabla_bonita = tabulate([(tarea["hecha"], tarea["titulo"]) for tarea in tareas],
-                            headers=["COMPLETADA", "TITULO"], tablefmt="rounded_grid")
-    print(f"\n{tabla_bonita}\n")
+    
+for _ID, tarea in enumerate(tareas):
+    tabla.add_row(
+        str(_ID + 1),
+        "✓" if tarea["completada"] else "ｘ",
+        tarea["titulo"]
+    )
+
+consola.print(tabla)
