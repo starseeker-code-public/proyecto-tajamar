@@ -17,7 +17,13 @@ pygments = "2.20.0"
 pytest = "9.0.3"
 rich = "15.0.0"
 tabulate = "^0.10.0"
+ruff = "^0.15.14"
+pre-commit = "^4.6.0"
 
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["."]
+python_files = ["test.py", "test_*.py", "*_test.py"]
 
 [build-system]
 requires = ["poetry-core"]
