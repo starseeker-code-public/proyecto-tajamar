@@ -14,8 +14,8 @@ class UI:
         for _ID, tarea in enumerate(lista_tareas):
             cls.tabla.add_row(
                 str(_ID + 1),
-                "✓" if tarea["completada"] else "ｘ",
-                tarea["titulo"]
+                "✓" if tarea.completada else "ｘ",
+                tarea.titulo
             )
 
 UI.tabla.add_column("ID")
