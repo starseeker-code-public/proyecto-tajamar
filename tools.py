@@ -10,5 +10,8 @@ def bucle_tareas() -> list:
         titulo_tarea = input(msg_input)
         if titulo_tarea.upper() in condiciones_stop:
             break
+        if titulo_tarea.upper() == "VER":
+            print([str(tarea) for tarea in lista_tareas])
+            continue
         añadir_tarea(lista_tareas, titulo_tarea.title())
     return lista_tareas
