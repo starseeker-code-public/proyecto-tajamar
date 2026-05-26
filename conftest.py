@@ -1,6 +1,6 @@
 from pytest import fixture
-from tareas import crear_tarea
+from tareas import Tarea
 
 @fixture
 def tarea():
-    return crear_tarea("Hacer commit")
+    return Tarea("Hacer commit")

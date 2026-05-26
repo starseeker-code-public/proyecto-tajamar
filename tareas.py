@@ -1,13 +1,13 @@
-def crear_tarea(titulo: str):
-    return {
-        "titulo": titulo,
-        "completada": False
-    }
+
+class Tarea:
+    def __init__(self, titulo: str):
+            self.titulo = titulo
+            self.completada = False
+        
+    def __str__(self) -> str:
+        completada = "[x]" if self.completada else "[ ]"
+        return f"{completada} - {self.titulo}"
     
 def añadir_tarea(lista_tareas: list, titulo_tarea: str):
-    tarea = crear_tarea(titulo_tarea)
+    tarea = Tarea(titulo_tarea)
     lista_tareas.append(tarea)
-    
-def formatear_tarea(tarea):
-    completada = "[x]" if tarea["completada"] else "[ ]"
-    return f"{completada} - {tarea["titulo"]}"
